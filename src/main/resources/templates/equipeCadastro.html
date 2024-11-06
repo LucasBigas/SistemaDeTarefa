@@ -15,40 +15,16 @@
                 <div class="form-group">
                     <label for="textnome">Nome da Equipe:</label>
                     <input type="text" class="form-control" id="textnome" placeholder="Nome da Equipe" th:field="*{nomeEquipe}">
+                    <span class="error" th:if="${#fields.hasErrors('nomeEquipe')}" th:errors="*{nomeEquipe}"></span>
                 </div>
-               <div class="form-group">
-                <label>Pessoas:</label>
-                <select class="form-select" th:field="*{pessoas}">
-                    <option th:each="usuario : ${listaUsuarios}" th:text="${usuario.nomeCompleto}" th:value="${usuario.id}"></option>
-                </select>
+                <div class="form-group">
+                    <label>Pessoas:</label>
+                    <select class="form-select" multiple="multiple" th:field="*{pessoas}">
+                        <option th:each="usuario : ${listaUsuarios}" th:text="${usuario.nomeCompleto}" th:value="${usuario.id}"></option>
+                    </select>
                </div>
                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
-             <div class="modal fade" id="usuariosModal" tabindex="-1" aria-labelledby="usuariosModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="usuariosModalLabel">Selecione as Pessoas</h5>
-                        <!-- Button to close modal -->
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div th:each="usuario : ${listaUsuarios}">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="${usuario.id}" id="usuario_${usuario.id}" th:data-usuario-id="${usuario.id}">
-                                <label class="form-check-label" for="usuario_${usuario.id}">
-                                    <span th:text="${usuario.nomeCompleto}"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" id="saveSelection">Salvar Seleção</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         </main>
     </body>
 </html>

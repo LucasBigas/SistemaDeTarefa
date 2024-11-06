@@ -35,14 +35,20 @@ h1{
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-.form-select{
+
+.form-select {
     padding: 10px;
     border-radius: 30px;
     margin-bottom: 20px;
-    
+    /* Ajusta a altura para exibir mais opções */
+    overflow-y: auto; /* Adiciona a barra de rolagem quando necessário */
+    background-color: #fff;
 }
 .btn-primary{
     border-radius: 30px;
     width: 100px;
     
+}
+span{
+    color: red;
 }

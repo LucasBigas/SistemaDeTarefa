@@ -36,6 +36,11 @@ main.container {
     padding: 20px;
     
 }
+.container a{
+    margin-bottom: 20px;
+    border-radius: 20px;
+    width: 100px;
+}
 .card-container {
     display: flex;
     flex-wrap: wrap; /* Permite que os cards quebrem linha se não houver espaço suficiente */
