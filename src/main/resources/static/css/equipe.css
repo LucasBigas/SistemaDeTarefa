@@ -1,0 +1,55 @@
+.sidebar{
+    display: flex;
+    justify-content: space-between; /* Alinha os itens ao longo da barra */
+    align-items: center; /* Centraliza verticalmente */
+    background-color: #5CB0FF;
+    padding: 10px; /* Espaçamento */
+    height: 60px; /* Altura da barra lateral */
+}
+.sidebar ul {
+    list-style-type: none;
+    display: flex; /* Alinha os itens do menu em linha */
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li {
+    margin: 0 15px; /* Espaçamento entre os itens */
+}
+.sidebar ul li a {
+    background-color: azure;
+    border-radius: 30px;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+}
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+.sidebar img {
+    border-radius: 80%;
+    background-color: azure;
+    height: 50px; /* Altura da imagem */
+    margin-left: 15px; /* Margem à esquerda da imagem */
+}
+main.container {
+    background-color: #fff;
+    padding: 20px;
+    
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem linha se não houver espaço suficiente */
+    gap: 20px; /* Espaço entre os cards */
+}
+.card {
+    flex: 1 1 300px; /* Cards com largura mínima de 300px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    max-width: 300px;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

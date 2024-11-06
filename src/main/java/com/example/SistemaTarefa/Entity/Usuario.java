@@ -34,7 +34,7 @@ public class Usuario {
     @NotBlank(message = "Residência é obrigatória")
     private String residencia;
 
-    @NotBlank(message = "Telefone é obrigatório")
+    @NotBlank(message = "Telefone é obrigatório")   
     private String telefone;
 
     @NotBlank(message = "CPF é obrigatório")
@@ -57,5 +57,6 @@ public class Usuario {
     @Size(min = 6, message = "Senha deve ter no mínimo 6 caracteres")
     private String senha;
 
+    
     
 }
