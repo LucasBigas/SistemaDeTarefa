@@ -1,0 +1,78 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/cadastro.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <img src="/img/user.png" alt="usuario">
+        <h1><strong>Cadastro</strong></h1>
+        <form th:action="@{/usuario/cadastro}" method="post" th:object="${usuario}" class="form">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label for="textnome">Nome Completo:</label>
+                <input type="text" class="form-control" id="textnome" placeholder="Nome completo" th:field="*{nomeCompleto}">
+                <span class="error" th:if="${#fields.hasErrors('nomeCompleto')}" th:errors="*{nomeCompleto}"></span>
+            </div>
+            <div class="form-group">
+                <label for="textemail">E-mail:</label>
+                <input type="text" class="form-control" id="textemail" placeholder="E-mail" th:field="*{email}">
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+            <div class="form-group row">
+                <label for="textcpf" class="col-sm-2 col-form-label">CPF:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="textcpf"  placeholder="CPF" th:field="*{cpf}">
+
+                    <span class="error" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+                </div>
+                <label for="textrg" class="col-sm-2 col-form-label">RG:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="textrg"  placeholder="RG" th:field="*{rg}">
+
+                    <span class="error" th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="textdataNascimento" class="col-sm-2 col-form-label">Data de Nascimento:</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" id="textdataNascimento"   placeholder="Data de Nascimento" th:field="*{dataNascimento}">
+
+                    <span class="error" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></span>
+                </div>
+                <label for="textsexo" class="col-sm-2 col-form-label">Sexo:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="textsexo" placeholder="Sexo" th:field="*{sexo}">
+                    <span class="error" th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="texttelefone" class="col-sm-2 col-form-label">Telefone:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="texttelefone" placeholder="Telefone" th:field="*{telefone}">
+                    <span class="error" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
+                </div>
+                <label for="textresidencia" class="col-sm-2 col-form-label">Residência:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="textresidencia"  placeholder="Residência" th:field="*{residencia}">
+
+                    <span class="error" th:if="${#fields.hasErrors('residencia')}" th:errors="*{residencia}"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="textsenha">Senha:</label>
+                <input type="password" class="form-control" id="textsenha"   placeholder="Senha" th:field="*{senha}">
+                <span class="error" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+            </div>
+            <div class="botoes">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <a th:href="@{/login}"  class="button">Voltar</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

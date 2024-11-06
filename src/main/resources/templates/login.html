@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-bt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" th:href="@{/css/login.css}">
+    </head>
+    <body>
+        <main class="container">
+            <img src="  /img/user.png" alt="user">
+            <h1><Strong>Login</Strong></h1>
+            <form th:action="@{/login}" method="post" class="form">
+                <div class="form-group">
+                    <label for="textemail">E-mail:</label>
+                    <input type="text" class="form-control" id="textemail" placeholder="E-mail" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="textsenha">Senha:</label>
+                    <input type="password" class="form-control" id="textsenha"  placeholder="Senha" name="senha">
+                </div>
+                <div class="botoes">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <a th:href="@{/usuario/novo}" class="button">Cadastro</a>
+                </div>
+            <form>
+        </main>
+    </body>
+</html>
