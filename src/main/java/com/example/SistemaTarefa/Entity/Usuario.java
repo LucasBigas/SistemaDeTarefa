@@ -25,7 +25,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-   @NotBlank(message = "Nome completo é obrigatório")
+    @NotBlank(message = "Nome completo é obrigatório")
     private String nomeCompleto;
 
     @NotBlank(message = "Sexo é obrigatório")
@@ -38,7 +38,7 @@ public class Usuario {
     private String telefone;
 
     @NotBlank(message = "CPF é obrigatório")
-    @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
+    @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "CPF deve estar no formato XXX.XXX.XXX-XX")
     private String cpf;
 
     @NotBlank(message = "RG é obrigatório")
