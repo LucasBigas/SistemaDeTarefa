@@ -53,7 +53,7 @@ public class UserController {
             return new ModelAndView("cadastro", "usuario", usuario);
         }
         usuarioService.salvar(usuario);
-        return new ModelAndView("redirect:/usuario/login");
+        return new ModelAndView("redirect:/usuario");
     }
 
     //alterar o usuário
