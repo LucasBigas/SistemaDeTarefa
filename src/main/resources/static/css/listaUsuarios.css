@@ -1,0 +1,136 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: linear-gradient(45deg, red, blue);
+}
+
+.nav {
+    padding: 20px;
+    margin: 10px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1em;
+    font-size: 30px;
+}
+
+.nav ul li {
+    color: #ffffff;
+    border: solid 2px #ffffff;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Permite quebra de linha */
+    gap: 20px;
+    max-width: 100%; /* Limita a largura para evitar saída do body */
+    
+}
+.user-card h2{
+    color: #000000;
+    font-weight: 800;
+}
+p strong {
+    color: #000000;
+    font-weight: 800; /* Peso mais forte */
+     /* Sombra leve */
+}
+
+
+.add-btn {
+    margin-left: 150px;
+    align-self: flex-start;
+    background-color: rgba(40, 167, 69, 1);
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-btn:hover {
+    background-color: rgba(40, 167, 69, 1);
+    transform: scale(1.1);
+}
+.user-card {
+    flex: 1 1 300px;
+    width: 300px; /* Define largura mínima e ajusta flexibilidade */
+    max-width: 300px; /* Limita a largura máxima de cada card */
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: left;
+    justify-content: center;
+}
+
+.user-card h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.user-card p {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+    background-color: rgba(0, 123, 255, 0.6);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.edit-btn:hover {
+    background-color: rgba(0, 123, 255, 1);
+    transform: scale(1.1);
+}
+
+.delete-btn {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 1);
+    transform: scale(1.1);
+}
+
+.add-btn i, .edit-btn i, .delete-btn i {
+    color: white;
+}
+
+/* Alinha os cards em uma linha */
+.user-card {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.main {
+    flex-wrap: wrap;
+    gap: 20px;
+}

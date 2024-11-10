@@ -1,0 +1,83 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: linear-gradient(45deg, red, blue);
+}
+
+.container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+form {
+    
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 3em;
+    border-radius: 30px;
+    text-align: center;
+    width: 600px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+input {
+   border-radius: 5000px;
+   padding: 1em;
+   border: none;
+   margin-bottom: 2em;
+
+}
+.form-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.button1 {
+    width: 95%;
+    border-radius: 30px;
+    padding: 12px;
+    background-color: rgba(40, 167, 69, 1);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.button2{
+    width: 100%;
+    border-radius: 30px;
+    padding: 1em;
+    background-color: rgba(0, 123, 255, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.button1:hover {
+    background-color: rgba(40, 167, 69, 1);
+}
+.button2:hover {
+    background-color: rgba(0, 123, 255, 0.6);
+}
+a{
+    text-decoration: none;
+    color: white;
+}

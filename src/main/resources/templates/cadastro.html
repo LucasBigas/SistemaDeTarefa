@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/cadastro.css}">
+</head>
+<body>
+    <main class="container">
+        <!-- Formulário de Cadastro -->
+        <form th:action="@{/usuario/salvar}" th:object="${usuario}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="icon-container">
+                <i class="fa-regular fa-user fa-4x"></i>
+            </div>
+            
+            <h1>Cadastro</h1>
+            <div class="form-columns">
+                <div class="column">
+                    <span th:if="${#fields.hasErrors('nomeCompleto')}" th:errors="*{nomeCompleto}" class="error-message"></span><!-- Campos do formulário com integração Thymeleaf -->
+                    <input type="text" th:field="*{nomeCompleto}" placeholder="NOME COMPLETO">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></span>
+                    <input type="email" th:field="*{email}" placeholder="EMAIL">
+                    <span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="error-message"></span>
+                    <input type="text" th:field="*{cpf}" placeholder="CPF">
+                    <span th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}" class="error-message"></span>
+                    <input type="date" th:field="*{dataNascimento}" placeholder="DATA DE NASCIMENTO">
+                    <span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}" class="error-message"></span>
+                    <input type="text" th:field="*{endereco}" placeholder="ENDEREÇO">
+                    <button type="submit" class="button2">SALVAR</button>
+                </div>
+                <div class="column">
+                    <span th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}" class="error-message"></span>
+                    <input type="text" th:field="*{sexo}" placeholder="SEXO">
+                    <span th:if="${#fields.hasErrors('rg')}" th:errors="*{rg}" class="error-message"></span>
+                    <input type="text" th:field="*{rg}" placeholder="RG">
+                    <span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}" class="error-message"></span>
+                    <input type="tel" th:field="*{telefone}" placeholder="TELEFONE">
+                    <input type="password" th:field="*{senha}" placeholder="SENHA">
+                    <input type="password" th:field="*{senha}" placeholder="CONFIRMAR SENHA">
+                    <a th:href="@{/usuario}" class="button1">VOLTAR</a>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
