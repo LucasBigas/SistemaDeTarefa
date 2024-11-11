@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Equipe</title>
+    <link rel="stylesheet" th:href="@{/css/equipe.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="container">
+        <form id="teamForm" th:action="@{/equipe/salvar}" th:object="${equipe}" method="post">
+            <input type="hidden" th:field="*{id}" >
+            <input type="hidden" th:field="*{usuarios}">
+            <h1>Cadastro de Equipe</h1>
+            <input type="text" th:field="*{nome}" placeholder="Nome da Equipe">
+
+            <div class="selection">
+                <div class="input-group">
+                    <select class="form-select" id="userSelect">
+                        <option selected disabled>Escolha um usuário...</option>
+                        <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nomeCompleto}"></option>
+                    </select>
+                    <button type="button" id="addUserButton">Adicionar Usuário</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Área onde os cartões dos usuários adicionados serão exibidos -->
+        <div id="teamMembers" class="team-members">
+            <h2>Usuários na Equipe:</h2>
+            <div id="cardsContainer" class="cards-container">
+                <!-- Os cards de usuários serão adicionados aqui dinamicamente -->
+            </div>
+        </div>
+
+        
+        <!-- Botão de Salvar -->
+        <button type="submit"  form="teamForm" id="saveButton">Salvar Equipe</button>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <script>
+        // Seleciona o botão de adicionar e o campo de seleção de usuários
+        const addUserButton = document.getElementById('addUserButton');
+        const userSelect = document.getElementById('userSelect');
+        const cardsContainer = document.getElementById('cardsContainer');
+
+        // Função para adicionar o usuário selecionado
+        addUserButton.addEventListener('click', function() {
+            const selectedUser = userSelect.options[userSelect.selectedIndex];
+            const userId = selectedUser.value;
+            const userName = selectedUser.text;
+
+            // Verifica se o usuário foi selecionado
+            if (userId !== "Escolha um usuário..." && userId) {
+                // Cria um novo card para o usuário
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+                    <span>${userName}</span>
+                    <button class="delete-btn"><i class="fas fa-trash-can fa-2x"></i></button>
+                    <input type="hidden" name="usuarios[${userId}]" value="${userId}"/>
+                `;
+
+                // Adiciona o card à área de membros da equipe
+                cardsContainer.appendChild(card);
+
+                // Adiciona funcionalidade de remoção do card
+                card.querySelector('.delete-btn').addEventListener('click', function() {
+                    card.remove(); // Remove o card associado ao botão de exclusão clicado
+                });
+
+                // Limpa a seleção do usuário
+                userSelect.value = "Escolha um usuário..."; 
+            } else {
+                alert("Por favor, escolha um usuário.");
+            }
+        });
+        
+    </script>
+</body>
+</html>

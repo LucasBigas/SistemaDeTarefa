@@ -1,0 +1,96 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: linear-gradient(45deg, red, blue);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 2em;
+    width: 400px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 1em;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    border-radius: 30px;
+    padding: 1em;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.team-members {
+    margin-top: 1em;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1em;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 1em;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background-color: rgba(255, 0, 0, 0.6); /* Red background */
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 1); /* Darker red on hover */
+    transform: scale(1.1);
+}
+
+.delete-btn i {
+    color: white; /* White color for the icon */
+}
