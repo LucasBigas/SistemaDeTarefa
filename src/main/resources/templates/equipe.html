@@ -10,8 +10,7 @@
 <body>
     <main class="container">
         <form id="teamForm" th:action="@{/equipe/salvar}" th:object="${equipe}" method="post">
-            <input type="hidden" th:field="*{id}" >
-            <input type="hidden" th:field="*{usuarios}">
+            <input type="hidden" th:field="*{id}">
             <h1>Cadastro de Equipe</h1>
             <input type="text" th:field="*{nome}" placeholder="Nome da Equipe">
 
@@ -24,6 +23,12 @@
                     <button type="button" id="addUserButton">Adicionar Usuário</button>
                 </div>
             </div>
+            
+            <!-- Campo oculto para armazenar IDs dos usuários adicionados -->
+            <div id="usuariosContainer"></div>
+            <br>
+            <!-- Botão de Salvar -->
+            <button type="submit" id="saveButton">Salvar Equipe</button>
         </form>
 
         <!-- Área onde os cartões dos usuários adicionados serão exibidos -->
@@ -33,11 +38,8 @@
                 <!-- Os cards de usuários serão adicionados aqui dinamicamente -->
             </div>
         </div>
-
-        
-        <!-- Botão de Salvar -->
-        <button type="submit"  form="teamForm" id="saveButton">Salvar Equipe</button>
     </main>
+
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
     <script>
@@ -45,6 +47,7 @@
         const addUserButton = document.getElementById('addUserButton');
         const userSelect = document.getElementById('userSelect');
         const cardsContainer = document.getElementById('cardsContainer');
+        const usuariosContainer = document.getElementById('usuariosContainer');
 
         // Função para adicionar o usuário selecionado
         addUserButton.addEventListener('click', function() {
@@ -60,24 +63,30 @@
                 card.innerHTML = `
                     <span>${userName}</span>
                     <button class="delete-btn"><i class="fas fa-trash-can fa-2x"></i></button>
-                    <input type="hidden" name="usuarios[${userId}]" value="${userId}"/>
                 `;
 
                 // Adiciona o card à área de membros da equipe
                 cardsContainer.appendChild(card);
 
-                // Adiciona funcionalidade de remoção do card
+                // Adiciona um campo oculto ao formulário para enviar o ID do usuário
+                const userInput = document.createElement('input');
+                userInput.type = 'hidden';
+                userInput.name = 'usuarios'; // Nome do campo correspondente ao atributo 'usuarios' na equipe
+                userInput.value = userId;
+                usuariosContainer.appendChild(userInput);
+
+                // Adiciona funcionalidade de remoção do card e do campo oculto
                 card.querySelector('.delete-btn').addEventListener('click', function() {
                     card.remove(); // Remove o card associado ao botão de exclusão clicado
+                    userInput.remove(); // Remove o campo oculto correspondente
                 });
 
                 // Limpa a seleção do usuário
-                userSelect.value = "Escolha um usuário..."; 
+                userSelect.value = "Escolha um usuário...";
             } else {
                 alert("Por favor, escolha um usuário.");
             }
         });
-        
     </script>
 </body>
 </html>
