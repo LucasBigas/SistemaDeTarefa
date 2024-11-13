@@ -34,7 +34,13 @@
         <!-- Área onde os cartões dos usuários adicionados serão exibidos -->
         <div id="teamMembers" class="team-members">
             <h2>Usuários na Equipe:</h2>
-            <div id="cardsContainer" class="cards-container">
+            <div id="cardsContainer" class="cards-container" >
+                <div th:each="equipe : ${equipe.usuarios}" class="card">
+                    <span th:text="${equipe.nomeCompleto}"></span>
+                    <button class="delete-btn"><i class="fas fa-trash-can fa-2x"></i></button>
+                    <input type="hidden" th:value="${equipe.id}">
+                    
+                </div>
                 <!-- Os cards de usuários serão adicionados aqui dinamicamente -->
             </div>
         </div>
@@ -58,6 +64,13 @@
             // Verifica se o usuário foi selecionado
             if (userId !== "Escolha um usuário..." && userId) {
                 // Cria um novo card para o usuário
+                const existingUserInput = Array.from(usuariosContainer.querySelectorAll('input'))
+                .find(input => input.value === userId);
+
+                if (existingUserInput) {
+                    alert("Este usuário já foi adicionado.");
+                    return;
+                }
                 const card = document.createElement('div');
                 card.classList.add('card');
                 card.innerHTML = `
