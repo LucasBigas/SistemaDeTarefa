@@ -27,9 +27,6 @@
                     <input type="text" th:field="*{cpf}" placeholder="CPF">
                     <span th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}" class="error-message"></span>
                     <input type="date" th:field="*{dataNascimento}" placeholder="DATA DE NASCIMENTO">
-                    <span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}" class="error-message"></span>
-                    <input type="text" th:field="*{endereco}" placeholder="ENDEREÇO">
-                    <button type="submit" class="button2">SALVAR</button>
                 </div>
                 <div class="column">
                     <span th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}" class="error-message"></span>
@@ -38,10 +35,17 @@
                     <input type="text" th:field="*{rg}" placeholder="RG">
                     <span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}" class="error-message"></span>
                     <input type="tel" th:field="*{telefone}" placeholder="TELEFONE">
-                    <input type="password" th:field="*{senha}" placeholder="SENHA">
-                    <input type="password" th:field="*{senha}" placeholder="CONFIRMAR SENHA">
-                    <a th:href="@{/usuario}" class="button1">VOLTAR</a>
+                    <span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}" class="error-message"></span>
+                    <input type="text" th:field="*{endereco}" placeholder="ENDEREÇO">
+                    
                 </div>
+            </div>
+            <div class="column"> 
+                <input type="password" th:field="*{senha}" placeholder="SENHA">
+            </div>
+            <div class="form-columns">
+                <button type="submit" class="button2">SALVAR</button>
+                <a th:href="@{/usuario}" class="button1">VOLTAR</a>
             </div>
         </form>
     </main>
