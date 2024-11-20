@@ -130,3 +130,8 @@ body {
 a{
     text-decoration: none;
 }
+
+.btn-primary button {
+    border-radius: 50%;
+    padding: 10px;
+}

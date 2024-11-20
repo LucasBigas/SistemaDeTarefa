@@ -57,15 +57,17 @@ public class EquipeController {
         return new ModelAndView("redirect:/equipe");
     }
 
-    //alterar
-    @GetMapping("/alterar/{id}")
-    public ModelAndView alterar(@PathVariable ("id")long id){
-        var equipe = equipeService.alterar(id);
-        var listaUsuarios = usuarioService.findAll();
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("equipe", equipe);
-        map.put("usuarios", listaUsuarios);
-        return new ModelAndView("equipe", map);
+    
+    @PostMapping("/{equipeId}/addUsuario/{usuarioId}")
+    public ModelAndView addUsuario(@PathVariable Long equipeId, @PathVariable Long usuarioId) {
+        equipeService.addUsuario(equipeId, usuarioId);
+        return new ModelAndView("redirect:/equipe");
+    }
+
+    @PostMapping("/{equipeId}/removeUsuario/{usuarioId}")
+    public ModelAndView removeUsuario(@PathVariable Long equipeId, @PathVariable Long usuarioId) {
+        equipeService.removeUsuario(equipeId, usuarioId);
+        return new ModelAndView("redirect:/equipe");
     }
 
     //deletar

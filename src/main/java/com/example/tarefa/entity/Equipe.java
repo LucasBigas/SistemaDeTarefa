@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +20,7 @@ public class Equipe {
     private Long id;
     private String nome;
 
-    @OneToMany(cascade = CascadeType.PERSIST) 
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Usuario> usuarios;
 
     
