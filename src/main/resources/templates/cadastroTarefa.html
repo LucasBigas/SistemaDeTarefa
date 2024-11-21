@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Tarefa</title>
+    <link rel="stylesheet" th:href="@{/css/cadastroTarefa.css}">
+</head>
+<body>
+    <main class="container">
+        <h1>Cadastro de Tarefa</h1>
+        <form th:action="@{/tarefa/salvar}" method="post" th:object="${tarefa}" class="form">
+            <input type="hidden" th:field="*{id}">
+            <input type="text" name="titulo" th:field="*{titulo}" placeholder="Título da tarefa" required>
+            <input type="text" name="descricao" th:field="*{descricao}" placeholder="Descrição da tarefa" required>
+            <input type="date" name="dataPrevista" th:field="*{dataPrevista}" placeholder="Data Prevista" required>
+            <input type="date" name="dataConclusao" th:field="*{dataConclusao}" placeholder="Data de Conclusão">
+            <select name="status" th:field="*{status}">
+                <option value="Em andamento">Em andamento</option>
+                <option value="Concluída">Concluída</option>
+                <option value="Pendente">Pendente</option>
+            </select>
+            <select name="responsavel" th:field="*{responsavel}">
+                <option th:each="equipe : ${listaEquipe}" th:value="${equipe.id}" th:text="${equipe.nome}">
+
+                </option>
+            </select>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+</body>
+</html>

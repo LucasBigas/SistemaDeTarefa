@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/listaTarefas.css}">
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li><a href="/tarefa">Tarefas</a></li>
+            <li><a href="/equipe">Equipe</a></li>
+            <li><a href="/usuarios">Usuários</a></li>
+        </ul>
+    </nav>
+    <main class="main">
+        <button class="add-btn">
+            <a href="tarefa/novo">
+                <i class="fa-solid fa-plus fa-2x"></i>
+            </a>
+        </button>
+        <div class="card">
+            <!-- Loop para exibir as tarefas -->
+            <div class="info" th:each="tarefa : ${listaTarefas}">
+                <p><strong>Título:</strong> <span th:text="${tarefa.titulo}"></span></p>
+                <p><strong>Descrição:</strong> <span th:text="${tarefa.descricao}"></span></p>
+                <p><strong>Status:</strong> <span th:text="${tarefa.status}"></span></p>
+                <p><strong>Data Prevista:</strong> <span th:text="${#dates.format(tarefa.dataPrevista, 'dd/MM/yyyy')}"></span></p>
+                <p><strong>Data Concluída:</strong> <span th:text="${#dates.format(tarefa.dataConclusao, 'dd/MM/yyyy')}"></span></p>
+                <p><strong>Responsável:</strong> <span th:text="${tarefa.responsavel?.nome}"></span></p>
+                <div class="card-buttons">
+                    <button class="btn btn-primary">Alterar</button>
+                    <form th:action="@{/tarefa/{id}/finalizar(id=${tarefa.id})}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Finalizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

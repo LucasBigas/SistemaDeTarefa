@@ -1,0 +1,111 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: linear-gradient(45deg, red, blue);
+    padding: 0%;
+    margin: 0%;
+}
+
+.nav{
+    margin: 10px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav ul{
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    font-size: 30px;
+    margin: 20px
+   
+
+}
+.nav ul li {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    border: solid 2px #ffffff;
+    padding: 5px;
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+.add-btn{
+    margin-left: 150px;
+    align-self: flex-start;
+    background-color: rgba(40, 167, 69, 1); /* Verde */
+    border: none;
+    border-radius: 50%; /* Botão redondo */
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    outline: none;
+    margin-bottom: 10px;
+}
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Permite quebra de linha */
+    gap: 20px;
+    max-width: 100%; 
+    
+}
+
+.info{
+    flex: 1 1 300px;
+    width: 300px; /* Define largura mínima e ajusta flexibilidade */
+    max-width: 300px; /* Limita a largura máxima de cada card */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: left;
+}
+
+.btn-primary{
+    background-color: rgba(0, 123, 255, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: rgba(0, 123, 255, 1);
+}
+.card-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.btn-danger{
+    background-color: rgba(255, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-danger:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
