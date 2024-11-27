@@ -11,9 +11,9 @@
 <body>
     <nav class="nav"> 
         <ul>
-            <li><a href="/tarefas">Tarefas</a></li>
-            <li><a href="/equipe">Equipe</a></li>
-            <li><a href="/usuarios">Usuários</a></li>
+            <li><a th:href="@{/tarefa}">Tarefas</a></li>
+            <li><a th:href="@{/equipe}">Equipe</a></li>
+            <li><a th:href="@{/usuario}">Usuários</a></li>
         </ul>
     </nav>
 
@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <div class="card-buttons">
-                    <button class="btn btn-primary"><i class="fa-solid fa-plus fa-2x"></i></button>
-                    <button class="btn btn-danger"><i class="fa-solid fa-trash-can fa-2x"></i></button>
+                    <a th:href="@{/equipe/{id}(id=${equipe.id})}" class="edit-btn"><i class="fa-solid fa-pen fa-2x"></i></a>
+                    <button class="delete-btn"><i class="fa-solid fa-trash-can fa-2x"></i></button>
                 </div>
             </div>
         </div>

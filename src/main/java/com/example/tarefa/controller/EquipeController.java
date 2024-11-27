@@ -1,17 +1,23 @@
 package com.example.tarefa.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.tarefa.entity.Equipe;
+import com.example.tarefa.entity.Usuario;
+import com.example.tarefa.repository.EquipeRepository;
+import com.example.tarefa.repository.UsuarioRepository;
 import com.example.tarefa.service.EquipeService;
 import com.example.tarefa.service.UsuarioService;
 
@@ -26,6 +32,11 @@ public class EquipeController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    @Autowired
+    private EquipeRepository equipeRepository;
 
     @GetMapping
     public ModelAndView lista(){
@@ -58,16 +69,34 @@ public class EquipeController {
     }
 
     
-    @PostMapping("/{equipeId}/addUsuario/{usuarioId}")
-    public ModelAndView addUsuario(@PathVariable Long equipeId, @PathVariable Long usuarioId) {
-        equipeService.addUsuario(equipeId, usuarioId);
-        return new ModelAndView("redirect:/equipe");
+   // Endpoint para adicionar um usuário à equipe
+    @PostMapping("/adicionar-usuario")
+    public String adicionarUsuario(@RequestParam Long equipeId, @RequestParam Long usuarioId) {
+        equipeService.adicionarUsuario(equipeId, usuarioId);
+        return "redirect:/equipe/" + equipeId; // Redirecionar para a página da equipe
     }
 
-    @PostMapping("/{equipeId}/removeUsuario/{usuarioId}")
-    public ModelAndView removeUsuario(@PathVariable Long equipeId, @PathVariable Long usuarioId) {
-        equipeService.removeUsuario(equipeId, usuarioId);
-        return new ModelAndView("redirect:/equipe");
+    // Endpoint para remover um usuário da equipe
+    @PostMapping("/remover-usuario")
+    public String removerUsuario(@RequestParam Long equipeId, @RequestParam Long usuarioId) {
+        equipeService.removerUsuario(equipeId, usuarioId);
+        return "redirect:/equipe/" + equipeId; // Redirecionar para a página da equipe
+    }
+
+    // Endpoint para exibir a página de uma equipe
+    @GetMapping("/{id}")
+    public String listarUsuariosDaEquipe(@PathVariable Long id, Model model) {
+        Equipe equipe = equipeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Equipe não encontrada"));
+        List<Usuario> usuariosDisponiveis = usuarioRepository.findAll(); // Todos os usuários
+
+        // Remover os usuários já associados à equipe da lista de disponíveis
+        usuariosDisponiveis.removeAll(equipe.getUsuarios());
+
+        model.addAttribute("equipe", equipe);
+        model.addAttribute("usuariosDisponiveis", usuariosDisponiveis);
+
+        return "listaUsuarioEquipe"; // Nome do template Thymeleaf
     }
 
     //deletar
