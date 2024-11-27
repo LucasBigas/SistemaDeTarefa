@@ -31,7 +31,7 @@
                 <p><strong>Data Concluída:</strong> <span th:text="${#dates.format(tarefa.dataConclusao, 'dd/MM/yyyy')}"></span></p>
                 <p><strong>Responsável:</strong> <span th:text="${tarefa.responsavel?.nome}"></span></p>
                 <div class="card-buttons">
-                    <button class="btn btn-primary">Alterar</button>
+                    <a th:href="@{'/tarefa/alterar/' + ${tarefa.id}}" class="btn btn-primary">alterar</a>
                     <form th:action="@{/tarefa/{id}/finalizar(id=${tarefa.id})}" method="post" style="display:inline;">
                         <button type="submit" class="btn btn-danger">Finalizar</button>
                     </form>

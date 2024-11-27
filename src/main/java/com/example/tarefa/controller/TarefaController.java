@@ -45,6 +45,16 @@ public class TarefaController {
         return new ModelAndView("redirect:/tarefa");
     }
 
+    @GetMapping("/alterar/{id}")
+    public ModelAndView alterar(@PathVariable ("id")long id){
+        var listaEquipe = equipeService.findAll();
+        var tarefa = tarefaService.alterar(id);
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("tarefa", tarefa);
+        map.put("listaEquipe", listaEquipe);
+        return new ModelAndView("cadastroTarefa", map);
+    } 
+
      @PostMapping("/{id}/finalizar")
     public ModelAndView finalizarTarefa(@PathVariable Long id) {
         tarefaService.finalizarTarefa(id);

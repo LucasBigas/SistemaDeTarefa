@@ -23,6 +23,14 @@ public class TarefaService {
     public Tarefa save(Tarefa tarefa) {
         return tarefaRepository.save(tarefa);
     }
+
+    public Tarefa alterar(Long id) {
+      var result = tarefaRepository.findById(id);
+      if(result.isPresent()){
+        return result.get();
+        }
+        return new Tarefa();
+    }
      public void finalizarTarefa(Long id) {
         Tarefa tarefa = tarefaRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));

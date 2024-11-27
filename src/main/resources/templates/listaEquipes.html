@@ -38,13 +38,51 @@
                 </div>
                 <div class="card-buttons">
                     <a th:href="@{/equipe/{id}(id=${equipe.id})}" class="edit-btn"><i class="fa-solid fa-pen fa-2x"></i></a>
-                    <button class="delete-btn"><i class="fa-solid fa-trash-can fa-2x"></i></button>
+                    <button class="delete-btn" th:data-id="${equipe.id}"><i class="fa-solid fa-trash-can fa-2x"></i></button>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal" tabindex="-1" id="modalequipe">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Excluir equipe</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Confirma a exclusão da equipe?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+              <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      
+      <script>
+            (function(){
+                $(".cards").on("click",".delete-btn",function(){
+                    let botaoClicado =$(this);
+                    $("#btnsim").attr("data-id",botaoClicado.attr("data-id"));
+                    $("#modalequipe").modal("show");
+                });
+
+                $("#btnsim").on("click",function(){
+                    let botaoSim =$(this);
+                    let id =botaoSim.attr("data-id");
+                    $.ajax({
+                        url: "/equipe/deletar/" + id,
+                        method: "GET",
+                        success:function(){
+                            window.location.href="/equipe";
+                        }
+                    });
+                });
+
+            })();
+      </script>
 </body>
 </html>
